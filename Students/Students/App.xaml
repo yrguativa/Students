@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:infra="clr-namespace:Students.Infrastructure"
+             x:Class="Students.App">
+	<Application.Resources>
+        <ResourceDictionary>
+            <!-- Application resource dictionary -->
+            <infra:InstanceLocator x:Key="Locator" />
+            <!-- Parameters  -->
+            <x:String x:Key="UrlApi">http://18.216.244.210/Students/apiweb/</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

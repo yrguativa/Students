@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             xmlns:local="clr-namespace:Students"
+             x:Class="Students.MainPage">
+    <ScrollView>
+        <StackLayout BindingContext="{Binding RegisterStudents}">
+           <Label Text="Registro de Estudiantes" 
+                HorizontalOptions="Center"
+                FontSize="Large"
+                VerticalOptions="Start" />
+            <Label Text="Completar la información siguiente para registrar un estudiante " 
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Start"
+                FontSize="Small"
+                VerticalOptions="Start" />
+            <Entry Margin="10,6" Placeholder="Nombres..." 
+               Text="{Binding Names, Mode=TwoWay}" 
+               FontSize="Medium" HorizontalTextAlignment="Start" />
+
+            <Entry Margin="10,6" Placeholder="Apellidos..." 
+               Text="{Binding Surnames, Mode=TwoWay}" 
+               FontSize="Medium" HorizontalTextAlignment="Start" />
+            <Picker Margin="10,6" Title="Tipo de identificación..." SelectedItem="{Binding IdentificationType}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>CC</x:String>
+                        <x:String>CE</x:String>
+                        <x:String>TI</x:String>
+                        <x:String>NT</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry Margin="10,6" Placeholder="Número de identificación..." 
+                Text="{Binding IdentificationNumber, Mode=TwoWay}" 
+                FontSize="Medium" 
+                Keyboard="Numeric"
+                HorizontalTextAlignment="Start" />
+            <Label Text="Fecha de nacimiento" Margin="10,3"
+                HorizontalOptions="Start"
+                FontSize="Medium"
+                VerticalOptions="Start" />
+            <DatePicker MinimumDate="01/01/1900" Margin="10,3"
+               MaximumDate="12/31/2018"
+               Date="{Binding BirthDate}" />
+            <Picker Margin="10,6" Title="Curso..." SelectedItem="{Binding CourseSelect}" 
+                ItemsSource="{Binding CoursesResponse}" ItemDisplayBinding="{Binding Course}" >
+            </Picker>
+            <ActivityIndicator IsRunning="{Binding IsRunning}" HeightRequest="{Binding SizeActivity}"
+                           WidthRequest="{Binding SizeActivity}">
+            </ActivityIndicator>
+            <Button Margin="10,6" 
+                Text="REGISTRARSE" 
+                HeightRequest="55" 
+               BorderRadius="23" 
+               Command="{Binding RegisterCommand}"              
+               IsEnabled="{Binding IsEnabled}"                  
+               FontSize="18" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
